@@ -1,0 +1,26 @@
+Windows:
+ Setar ambiente -> $env:FLASK_APP = "market"
+ Ativar debug -> $env:FLASK_DEBUG = 1  
+ Criar flask app-> set FLASK_APP=market.py  
+ Executar flask app -> python -m flask run 
+
+
+Instalar SQL from python:
+    pip install flask-sqlalchemy
+
+
+Criar banco de dados pelo terminal com python. First time
+- from market import db
+- db.create_all()
+
+Second time:
+from market import db
+from market import Item // Item é um objeto
+
+item1 = Item(name,price,barcode,description) 
+db.session.add(item1) // adicionar item no banco de dados
+db.session.commit()   // validar o item no banco de dados
+Item.query.all()      // Verifica o que tem dentro do banco de dados
+
+## for item in Item.query.all() // listar tudo ... Item.name, ...
+## for item in Item.query.filter_by(price=500) // filtrar por um valor
