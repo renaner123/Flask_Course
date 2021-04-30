@@ -7,7 +7,8 @@ Windows:
 
 Instalar SQL from python:
     pip install flask-sqlalchemy
-
+    pip install flask-wtf         //flask forms for registers
+    pip install wtforms
 
 Criar banco de dados pelo terminal com python. First time
 - from market import db
@@ -22,5 +23,12 @@ db.session.add(item1) // adicionar item no banco de dados
 db.session.commit()   // validar o item no banco de dados
 Item.query.all()      // Verifica o que tem dentro do banco de dados
 
+db.drop_all() // apaga as tables existentes, para poder criar novas
+
 ## for item in Item.query.all() // listar tudo ... Item.name, ...
 ## for item in Item.query.filter_by(price=500) // filtrar por um valor
+
+
+Após restruturação:
+
+from market.models import db
