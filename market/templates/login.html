@@ -4,5 +4,38 @@
 {% endblock %}
 
 {% block content%}
-    <h1>Login Form</h1>
+<body class="text-center">
+  <!-- cantainer centraliza toda o conteúdo -->
+  <div class="container">
+      <form method="POST" class="form-signin" style="color:white">
+          {{ form.hidden_tag()}}<!-- protege contra atacks de cross site request forgery -->
+          <img class="mb-4" src="https://res.cloudinary.com/jimshapedcoding/image/upload/v1597332609/android-icon-192x192_ove2a7.png" alt="">
+          <h1 class="h3 mb-3 font-weight-normal">
+              Please Login
+          </h1>
+          <br>
+          <!-- jinja sintax for grab the camps -->
+          {{ form.username.label() }}
+          {{ form.username(class="form-control", placeholder="User Name")}}
+
+          {{ form.password.label() }}
+          {{ form.password(class="form-control", placeholder="Password")}}
+
+          <br>
+
+          <div class="checkbox nb-3">
+              <h6>Do not have an account?</h6>
+              <a class="btn btn-sn btn-secondary" href="{{ url_for('register_page')}}"> Register</a>
+          </div>
+
+          <br>
+
+          {{ form.submit(class="btn btn-lg btn-block btn-primary")}}
+
+
+
+        </form>
+  </div>
+</body>
+
 {% endblock %}

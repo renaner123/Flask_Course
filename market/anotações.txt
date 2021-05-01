@@ -5,10 +5,13 @@ Windows:
  Executar flask app -> python -m flask run 
 
 
+
 Instalar SQL from python:
     pip install flask-sqlalchemy
     pip install flask-wtf         //flask forms for registers
-    pip install wtforms
+    pip install wtforms          // form para registro de usuários
+    pip install bcrypt          // gerar hash do password
+    pip install flask_login
 
 Criar banco de dados pelo terminal com python. First time
 - from market import db
