@@ -1,9 +1,9 @@
 from market import app
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash, request
 from market.models import Item, User
-from market.forms import RegisterForm, LoginForm
+from market.forms import RegisterForm, LoginForm, PurchaseItemForm
 from market import db
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 
 @app.route('/')
 @app.route('/home')
@@ -14,12 +14,26 @@ def home_page():
 def about(username):
     return f'<h1> This is the about page of {username}' """
 
-@app.route('/market')
+@app.route('/market', methods=['GET','POST'])
 @login_required #responsável por fazer o usuário se logar pra entrar no market
 def market_page():
-    items = Item.query.all()
+    purchase_form = PurchaseItemForm()
+    if request.method == "POST":
+        purchased_item = request.form.get('purchased_item')
+        p_item_object = Item.query.filter_by(name=purchased_item).first()
+        if p_item_object:
+            if current_user.can_purchase(p_item_object):
+                p_item_object.buy(current_user)
+                flash(f"Congratulations! You purchased {p_item_object.name} for {p_item_object.price}", category="success")
+            else:
+                flash(f"Unfortunately, you don't have enough money to purchase {p_item_object.name}", category="danger")
+        return redirect(url_for('market_page'))
 
-    return render_template('market.html',items=items)
+    if request.method == "GET":
+        items = Item.query.filter_by(owner=None)
+        return render_template('market.html',items=items, purchase_form=purchase_form)
+
+    
 
 @app.route('/register', methods=['GET','POST'])
 def register_page():
@@ -52,7 +66,7 @@ def login_page():
             flash(f'Sucecess! You are logged in as: {attempted_user.username}', category='success')            
             return redirect(url_for('market_page'))
         else:
-            flash('Username and password are not match! Please try again',categoty="danger")
+            flash('Username and password are not match! Please try again',category="danger")
     return render_template('login.html', form=form)
 
 @app.route('/logout', methods=['GET', 'POST'])
