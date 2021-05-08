@@ -13,4 +13,4 @@ http://www.jimshapedcoding.com/courses/Flask%20Full%20Series
 
 ## Algumas anotações minhas
 
-+ [Anotações](anotações) - Anotações úteis realizadas durante o curso
++ [Anotações](market/anotações.txt) - Anotações úteis realizadas durante o curso
