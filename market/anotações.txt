@@ -4,8 +4,6 @@ Windows:
  Criar flask app-> set FLASK_APP=market.py  
  Executar flask app -> python -m flask run 
 
-
-
 Instalar SQL from python:
     pip install flask-sqlalchemy
     pip install flask-wtf         //flask forms for registers
