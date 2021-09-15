@@ -1,6 +1,6 @@
 
 
-## ✏️ Course created by Jim from JimShapedCoding. Check out his channel: https://www.youtube.com/channel/UCU8d...
+## ✏️ Course created by Jim from JimShapedCoding. Check out his channel: https://www.youtube.com/channel/UCU8d7rcShA7MGuDyYH1aWGg
 
 ### Site de apoio 
 http://www.jimshapedcoding.com/courses/Flask%20Full%20Series
